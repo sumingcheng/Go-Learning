@@ -8,6 +8,7 @@ func main() {
 
 	// 单个声明
 	const name = "admin"
+	fmt.Println(name)
 
 	// 多个声明
 	const (

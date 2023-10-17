@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func main() {
 	//str := "admin"
 	//
@@ -28,6 +26,5 @@ func main() {
 	//
 	//fmt.Println(`他说:"穷是原罪"`) // 他说:"穷是原罪"
 
-	fmt.Println("Hello\aWorld")
-
+	//fmt.Println("Hello\aWorld")
 }

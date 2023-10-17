@@ -1,7 +1,10 @@
 package main
 
-import "myMath/myMath"
+import (
+	"dataType/rune"
+)
 
 func main() {
-	myMath.Math()
+	//myMath.Math()
+	rune.PrintStr('蜜')
 }

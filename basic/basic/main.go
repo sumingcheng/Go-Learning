@@ -1,7 +1,7 @@
 package main
 
 import (
-	"basic1/calcuator"
+	"basic/calcuator"
 	"fmt"
 )
 

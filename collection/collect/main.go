@@ -18,5 +18,4 @@ func main() {
 	//b[0] = 42      // 修改 b 不会影响 a
 	//fmt.Println(a) // 输出：[1 2 3]
 	//fmt.Println(b) // 输出：[42 2 3]
-
 }

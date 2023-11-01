@@ -14,7 +14,8 @@ func main() {
 	//
 	//fmt.Println(arr1, arr2) // [] [1 2 3]
 
-	intercept6()
+	//intercept6()
+
 }
 
 // 截取 [start, end) 之间的元素

@@ -33,7 +33,8 @@ func main() {
 	//other()
 	//test()
 	//whetherItExists()
-	write()
+	//write()
+	courseMap()
 }
 
 func other() {
@@ -90,4 +91,41 @@ func write() {
 	for key, value := range myInfo {
 		fmt.Println(key, value) // 打印是无序的
 	}
+}
+
+func courseMap() {
+	courseMap := make(map[string]string, 3)
+	courseMap["name"] = "golang"
+	courseMap["site"] = "imooc"
+	courseMap["price"] = "free"
+
+	// 删除
+	delete(courseMap, "price")
+	fmt.Println(courseMap)
+	// 删除不存在的key，不会报错
+	delete(courseMap, "price")
+
+	//if value, existed := courseMap["name"]; existed {
+	//	fmt.Println(value)
+	//} else {
+	//	fmt.Println("key does not exist")
+	//}
+
+	//fmt.Println(courseMap)
+
+	//value, existed := courseMap["name"]
+	//fmt.Println(value, existed) // golang true
+
+	// map 是无序的集合，不要依赖map的顺序
+	//for key, value := range courseMap {
+	//	fmt.Println(key, value)
+	//}
+
+	//	多类型的map
+	//courseMap2 := make(map[string]interface{}, 3)
+	//courseMap2["name"] = "golang"
+	//courseMap2["site"] = true
+	//courseMap2["price"] = 0
+	//
+	//fmt.Println(courseMap2)
 }

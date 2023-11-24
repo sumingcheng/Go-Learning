@@ -20,8 +20,8 @@ func main() {
 
 	for {
 		fmt.Println("欢迎使用记账本")
-		fmt.Println("1. 添加账目")
-		fmt.Println("2. 查看账目")
+		fmt.Println("1. 添加账单")
+		fmt.Println("2. 查看账单")
 		fmt.Println("3. 退出")
 		fmt.Print("请输入操作数字: ")
 

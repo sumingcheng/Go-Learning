@@ -6,4 +6,5 @@ func main() {
 	//compute := func(a, b int, method string, cb TypeCallBack) string {
 	//	return cb(a, b, method, a+b)
 	//}
+
 }

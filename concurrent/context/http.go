@@ -4,63 +4,71 @@ import (
 	"context"
 	"fmt"
 	"net/http"
+	"sync"
 	"time"
 )
 
-// doRequest 发起一个HTTP请求，并在上下文取消时停止
-func doRequest(ctx context.Context, url string) error {
-	// http.NewRequestWithContext 创建一个新的请求
+// doRequest 发起HTTP请求，并在上下文取消时停止
+func doRequest(ctx context.Context, url string, wg *sync.WaitGroup, cancelFunc context.CancelFunc) {
+	defer wg.Done()
+
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
 	if err != nil {
-		return err
+		fmt.Println("创建请求失败:", err)
+		cancelFunc() // 出现创建请求的错误，取消后续所有请求
+		return
 	}
 
-	// 使用http.DefaultClient发送请求
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
-		return err
+		fmt.Println("请求失败:", err)
+		cancelFunc() // 请求失败，取消后续所有请求
+		return
 	}
 	defer resp.Body.Close()
 
-	// 检查响应状态码是否为200
 	if resp.StatusCode != http.StatusOK {
-		return fmt.Errorf("请求失败: 状态码 %d", resp.StatusCode)
+		fmt.Printf("请求失败: 状态码 %d\n", resp.StatusCode)
+		cancelFunc() // HTTP状态不是200，取消后续所有请求
+		return
 	}
-	return nil
+
+	fmt.Println("成功完成请求:", url)
 }
 
 func main() {
-	// 创建一个带有超时的上下文
-	ctx, cancel := context.WithTimeout(context.Background(), 4*time.Second)
-	defer cancel() // 确保所有退出路径都取消上下文
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
 
-	// 请求的URL列表
 	urls := []string{
 		"http://example.com/request1",
 		"http://example.com/request2",
 		"http://example.com/request3",
+		"http://example.com/request4",
+		"http://example.com/request5",
 	}
 
-	// 顺序执行每个请求
-	for _, url := range urls {
-		err := doRequest(ctx, url)
-		if err != nil {
-			fmt.Println("在执行请求时发生错误:", err)
-			break
+	var wg sync.WaitGroup
+	for i, url := range urls {
+		wg.Add(1)
+		go doRequest(ctx, url, &wg, cancel)
+
+		// 检查第二个请求后是否有取消信号
+		if i == 1 {
+			time.Sleep(2 * time.Second) // 等待第二个请求的结果
+			if ctx.Err() != nil {
+				break // 如果有取消信号，则不再发起新的请求
+			}
 		}
-		fmt.Println("成功完成请求:", url)
 	}
+
+	// 等待所有已经开始的goroutine
+	wg.Wait()
 
 	// 检查上下文是否被取消
 	if ctx.Err() == context.Canceled {
 		fmt.Println("操作被取消")
-	} else if ctx.Err() == context.DeadlineExceeded {
-
-		fmt.Println("操作超时")
-	}
-
-	// 如果没有错误，说明所有请求都成功执行
-	if ctx.Err() == nil {
+	} else {
 		fmt.Println("所有请求成功完成")
 	}
 }

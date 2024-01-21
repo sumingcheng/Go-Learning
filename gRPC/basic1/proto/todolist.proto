@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option go_package = "./;proto";
+
+message AddingTodoRequest {
+  string content = 1;
+}
+
+message TogglingTodoRequest{
+  int64 id = 1;
+}
+
+message RemovingTodoRequest{
+  int64 id = 1;
+}
+
+// 响应
+message TodoResponse{
+  int64 id = 1;
+  string content = 2;
+  bool completed = 3;
+}
+
+// 服务
+service TodoList{
+  rpc AddTodo(AddingTodoRequest) returns (TodoResponse);
+  rpc ToggleTodo(TogglingTodoRequest) returns (TodoResponse);
+  rpc RemoveTodo(RemovingTodoRequest) returns (TodoResponse);
+}
+

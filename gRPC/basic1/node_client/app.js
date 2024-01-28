@@ -1,5 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+
+// 导入gRPC客户端
+const gClient = require('./grpc');
 const app = express();
 
 app.use(bodyParser.json());
@@ -16,42 +19,31 @@ list = []
 app.post('/add_todo', (req, res) => {
     const {content} = req.body;
 
-    const todo = {
-        id: new Date().getTime(),
-        content,
-        completed: false,
-    }
-
-    list.push(todo);
-    console.log(list)
-    res.json(todo)
+    gClient.AddTodo({
+        content: content
+    }, (err, response) => {
+        res.json(response)
+    })
 })
 
 app.post('/toggle_todo', (req, res) => {
     const {id} = req.body;
 
-    let target = null;
-    list = list.map(todo => {
-        if (todo.id == id) {
-            todo.completed = !todo.completed;
-        }
-        target = todo;
-        return todo;
+    gClient.ToggleTodo({
+        id: id
+    }, (err, response) => {
+        res.json(response)
     })
-    console.log(list)
-    res.json(target)
 })
 
 app.post('/remove_todo', (req, res) => {
     const {id} = req.body;
 
-    const target = list.find(todo => todo.id == id);
-    list = list.filter(todo => {
-        return todo.id != id
+    gClient.RemoveTodo({
+        id: id
+    }, (err, response) => {
+        res.json(response)
     })
-
-    console.log(list)
-    res.json(target)
 })
 
 

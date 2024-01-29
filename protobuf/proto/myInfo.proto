@@ -1,0 +1,19 @@
+syntax = "proto3";
+option go_package = "./;proto";
+
+message MyInfoRequest {
+  string name = 1;
+  int32 age = 2;
+  bool isMarriage = 3;
+}
+
+message MyInfoResponse {
+  string name = 1;
+  int32 age = 2;
+  bool isMarriage = 3;
+}
+
+// interface
+service MyInfoService {
+  rpc GetData(MyInfoRequest) returns (MyInfoResponse);
+}

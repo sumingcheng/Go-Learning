@@ -6,7 +6,6 @@
 
 package proto
 
-// 引入必要的 Go 包。
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
@@ -14,24 +13,23 @@ import (
 	sync "sync"
 )
 
-// 以下两行代码是自动代码校验，确保生成的代码是最新的。
 const (
-	_ = protoimpl.EnforceVersion(20 - protoimpl.MinVersion) // 确保 protoimpl 的版本是最新的。
-	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20) // 确保运行时的 protoimpl 是最新的。
+	// Verify that this generated code is sufficiently up-to-date.
+	_ = protoimpl.EnforceVersion(20 - protoimpl.MinVersion)
+	// Verify that runtime/protoimpl is sufficiently up-to-date.
+	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// MyInfoRequest 是一个消息，用来存放请求的数据结构。
 type MyInfoRequest struct {
-	state         protoimpl.MessageState  // 内部状态，由 protoimpl 管理。
-	sizeCache     protoimpl.SizeCache     // 缓存大小，由 protoimpl 管理。
-	unknownFields protoimpl.UnknownFields // 未知字段，由 protoimpl 管理。
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
 
-	Name       string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`              // 名字，字符串类型。
-	Age        int32  `protobuf:"varint,2,opt,name=age,proto3" json:"age,omitempty"`               // 年龄，int32 类型。
-	IsMarriage bool   `protobuf:"varint,3,opt,name=isMarriage,proto3" json:"isMarriage,omitempty"` // 是否已婚，布尔类型。
+	Name       string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Age        int32  `protobuf:"varint,2,opt,name=age,proto3" json:"age,omitempty"`
+	IsMarriage bool   `protobuf:"varint,3,opt,name=isMarriage,proto3" json:"isMarriage,omitempty"`
 }
 
-// Reset 重置消息的状态。
 func (x *MyInfoRequest) Reset() {
 	*x = MyInfoRequest{}
 	if protoimpl.UnsafeEnabled {
@@ -41,15 +39,12 @@ func (x *MyInfoRequest) Reset() {
 	}
 }
 
-// String 将消息转换成字符串。
 func (x *MyInfoRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-// ProtoMessage 标记这是一个 protobuf 消息。
 func (*MyInfoRequest) ProtoMessage() {}
 
-// ProtoReflect 返回消息的反射信息。
 func (x *MyInfoRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_myInfo_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
@@ -62,12 +57,11 @@ func (x *MyInfoRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: 使用 MyInfoRequest.ProtoReflect.Descriptor 代替。
+// Deprecated: Use MyInfoRequest.ProtoReflect.Descriptor instead.
 func (*MyInfoRequest) Descriptor() ([]byte, []int) {
 	return file_myInfo_proto_rawDescGZIP(), []int{0}
 }
 
-// GetName 获取姓名。
 func (x *MyInfoRequest) GetName() string {
 	if x != nil {
 		return x.Name
@@ -75,7 +69,6 @@ func (x *MyInfoRequest) GetName() string {
 	return ""
 }
 
-// GetAge 获取年龄。
 func (x *MyInfoRequest) GetAge() int32 {
 	if x != nil {
 		return x.Age
@@ -83,7 +76,6 @@ func (x *MyInfoRequest) GetAge() int32 {
 	return 0
 }
 
-// GetIsMarriage 获取婚姻状态。
 func (x *MyInfoRequest) GetIsMarriage() bool {
 	if x != nil {
 		return x.IsMarriage
@@ -91,18 +83,16 @@ func (x *MyInfoRequest) GetIsMarriage() bool {
 	return false
 }
 
-// MyInfoResponse 是一个消息，用来存放响应的数据结构。
 type MyInfoResponse struct {
-	state         protoimpl.MessageState  // 内部状态，由 protoimpl 管理。
-	sizeCache     protoimpl.SizeCache     // 缓存大小，由 protoimpl 管理。
-	unknownFields protoimpl.UnknownFields // 未知字段，由 protoimpl 管理。
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
 
-	Name       string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`              // 名字，字符串类型。
-	Age        int32  `protobuf:"varint,2,opt,name=age,proto3" json:"age,omitempty"`               // 年龄，int32 类型。
-	IsMarriage bool   `protobuf:"varint,3,opt,name=isMarriage,proto3" json:"isMarriage,omitempty"` // 是否已婚，布尔类型。
+	Name       string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Age        int32  `protobuf:"varint,2,opt,name=age,proto3" json:"age,omitempty"`
+	IsMarriage bool   `protobuf:"varint,3,opt,name=isMarriage,proto3" json:"isMarriage,omitempty"`
 }
 
-// Reset 重置消息的状态。
 func (x *MyInfoResponse) Reset() {
 	*x = MyInfoResponse{}
 	if protoimpl.UnsafeEnabled {
@@ -112,15 +102,12 @@ func (x *MyInfoResponse) Reset() {
 	}
 }
 
-// String 将消息转换成字符串。
 func (x *MyInfoResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-// ProtoMessage 标记这是一个 protobuf 消息。
 func (*MyInfoResponse) ProtoMessage() {}
 
-// ProtoReflect 返回消息的反射信息。
 func (x *MyInfoResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_myInfo_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
@@ -133,12 +120,11 @@ func (x *MyInfoResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: 使用 MyInfoResponse.ProtoReflect.Descriptor 代替。
+// Deprecated: Use MyInfoResponse.ProtoReflect.Descriptor instead.
 func (*MyInfoResponse) Descriptor() ([]byte, []int) {
 	return file_myInfo_proto_rawDescGZIP(), []int{1}
 }
 
-// GetName 获取姓名。
 func (x *MyInfoResponse) GetName() string {
 	if x != nil {
 		return x.Name
@@ -146,7 +132,6 @@ func (x *MyInfoResponse) GetName() string {
 	return ""
 }
 
-// GetAge 获取年龄。
 func (x *MyInfoResponse) GetAge() int32 {
 	if x != nil {
 		return x.Age
@@ -154,7 +139,6 @@ func (x *MyInfoResponse) GetAge() int32 {
 	return 0
 }
 
-// GetIsMarriage 获取婚姻状态。
 func (x *MyInfoResponse) GetIsMarriage() bool {
 	if x != nil {
 		return x.IsMarriage
@@ -162,20 +146,33 @@ func (x *MyInfoResponse) GetIsMarriage() bool {
 	return false
 }
 
-// File_myInfo_proto 是 protobuf 文件的描述符。
 var File_myInfo_proto protoreflect.FileDescriptor
 
-// file_myInfo_proto_rawDesc 是原始的 protobuf 文件描述数据。
 var file_myInfo_proto_rawDesc = []byte{
-	// ... (protobuf 文件的原始字节数据)
+	0x0a, 0x0c, 0x6d, 0x79, 0x49, 0x6e, 0x66, 0x6f, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x55,
+	0x0a, 0x0d, 0x4d, 0x79, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12,
+	0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e,
+	0x61, 0x6d, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x61, 0x67, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05,
+	0x52, 0x03, 0x61, 0x67, 0x65, 0x12, 0x1e, 0x0a, 0x0a, 0x69, 0x73, 0x4d, 0x61, 0x72, 0x72, 0x69,
+	0x61, 0x67, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x08, 0x52, 0x0a, 0x69, 0x73, 0x4d, 0x61, 0x72,
+	0x72, 0x69, 0x61, 0x67, 0x65, 0x22, 0x56, 0x0a, 0x0e, 0x4d, 0x79, 0x49, 0x6e, 0x66, 0x6f, 0x52,
+	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x61,
+	0x67, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x03, 0x61, 0x67, 0x65, 0x12, 0x1e, 0x0a,
+	0x0a, 0x69, 0x73, 0x4d, 0x61, 0x72, 0x72, 0x69, 0x61, 0x67, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28,
+	0x08, 0x52, 0x0a, 0x69, 0x73, 0x4d, 0x61, 0x72, 0x72, 0x69, 0x61, 0x67, 0x65, 0x32, 0x3b, 0x0a,
+	0x0d, 0x4d, 0x79, 0x49, 0x6e, 0x66, 0x6f, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x2a,
+	0x0a, 0x07, 0x47, 0x65, 0x74, 0x44, 0x61, 0x74, 0x61, 0x12, 0x0e, 0x2e, 0x4d, 0x79, 0x49, 0x6e,
+	0x66, 0x6f, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x0f, 0x2e, 0x4d, 0x79, 0x49, 0x6e,
+	0x66, 0x6f, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x0a, 0x5a, 0x08, 0x2e, 0x2f,
+	0x3b, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
-	file_myInfo_proto_rawDescOnce sync.Once                   // 确保原始描述只被加载一次。
-	file_myInfo_proto_rawDescData = file_myInfo_proto_rawDesc // 原始描述数据。
+	file_myInfo_proto_rawDescOnce sync.Once
+	file_myInfo_proto_rawDescData = file_myInfo_proto_rawDesc
 )
 
-// file_myInfo_proto_rawDescGZIP 返回 gzip 压缩的 protobuf 文件描述数据。
 func file_myInfo_proto_rawDescGZIP() []byte {
 	file_myInfo_proto_rawDescOnce.Do(func() {
 		file_myInfo_proto_rawDescData = protoimpl.X.CompressGZIP(file_myInfo_proto_rawDescData)
@@ -183,35 +180,27 @@ func file_myInfo_proto_rawDescGZIP() []byte {
 	return file_myInfo_proto_rawDescData
 }
 
-// file_myInfo_proto_msgTypes 存储消息类型的元数据。
 var file_myInfo_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
-
-// file_myInfo_proto_goTypes 存储 go 类型的列表。
 var file_myInfo_proto_goTypes = []interface{}{
 	(*MyInfoRequest)(nil),  // 0: MyInfoRequest
 	(*MyInfoResponse)(nil), // 1: MyInfoResponse
 }
-
-// file_myInfo_proto_depIdxs 存储依赖索引的列表。
 var file_myInfo_proto_depIdxs = []int32{
 	0, // 0: MyInfoService.GetData:input_type -> MyInfoRequest
 	1, // 1: MyInfoService.GetData:output_type -> MyInfoResponse
-	1, // [1:2] 是方法输出类型的子列表
-	0, // [0:1] 是方法输入类型的子列表
-	0, // [0:0] 是扩展类型名的子列表
-	0, // [0:0] 是扩展扩展的子列表
-	0, // [0:0] 是字段类型名的子列表
+	1, // [1:2] is the sub-list for method output_type
+	0, // [0:1] is the sub-list for method input_type
+	0, // [0:0] is the sub-list for extension type_name
+	0, // [0:0] is the sub-list for extension extendee
+	0, // [0:0] is the sub-list for field type_name
 }
 
 func init() { file_myInfo_proto_init() }
-
-// file_myInfo_proto_init 初始化 protobuf 文件。
 func file_myInfo_proto_init() {
 	if File_myInfo_proto != nil {
 		return
 	}
 	if !protoimpl.UnsafeEnabled {
-		// 设置消息的导出器。
 		file_myInfo_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*MyInfoRequest); i {
 			case 0:
@@ -237,7 +226,6 @@ func file_myInfo_proto_init() {
 			}
 		}
 	}
-	// 设置类型构建器。
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

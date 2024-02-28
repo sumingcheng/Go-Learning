@@ -1,0 +1,41 @@
+syntax = 'proto3';
+
+option go_package = "./;proto";
+import "google/protobuf/timestamp.proto";
+
+message StudentRequest {
+  int64 sid = 1;
+}
+
+enum Course {
+  GO = 0;
+  JAVA = 1;
+  PYTHON = 2;
+}
+
+enum Gender {
+  MALE = 0;
+  FEMALE = 1;
+}
+
+message Scores{
+  int32 interview = 1;
+  int32 written = 2;
+}
+
+message StudentResponse {
+  int64 sid = 1;
+  string sName = 2;
+  string age = 3;
+  // 枚举
+  Course course = 4;
+  Gender gender = 5;
+  // 嵌套
+  Scores scores = 6;
+  // 时间
+  google.protobuf.Timestamp joinTime = 7;
+}
+
+service StudentService {
+  rpc GetStudent (StudentRequest) returns (StudentResponse);
+}

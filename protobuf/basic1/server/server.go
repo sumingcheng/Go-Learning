@@ -2,8 +2,8 @@ package main
 
 import (
 	"context"
-	"goLearning/protobuf/basic1/data"
 	"goLearning/protobuf/basic1/proto"
+	"goLearning/protobuf/basic3/data"
 	"google.golang.org/grpc"
 	"net"
 )
@@ -18,7 +18,7 @@ func (c *Course) GetCourseList(ctx context.Context, req *proto.CourseRequest) (*
 		return &proto.CourseResponse{
 			Code: 0,
 			Msg:  "success",
-			Data: data.LanauageCourses,
+			Data: data.LanguageCourses,
 			Extra: map[string]string{
 				"test": "test",
 			},

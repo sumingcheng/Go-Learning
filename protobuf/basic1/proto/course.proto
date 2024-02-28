@@ -1,0 +1,29 @@
+syntax = 'proto3';
+
+option go_package = "./;proto";
+
+message CourseInfo{
+  int32 cid = 1;
+  string cname = 2;
+  string teacher = 3;
+}
+
+message CourseResponse{
+  int32 code = 1;
+  string msg = 2;
+  repeated CourseInfo data = 3;
+  //  附加信息
+  map<string, string> extra = 4;
+}
+
+message CourseRequest{
+  string type = 1;
+}
+
+
+service Course{
+  // 定义 GetCourseList 方法 传入 CourseRequest 返回 CourseResponse
+  rpc GetCourseList(CourseRequest) returns (CourseResponse);
+}
+
+

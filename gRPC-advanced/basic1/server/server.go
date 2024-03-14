@@ -4,6 +4,8 @@ import (
 	"context"
 	"goLearning/gRPC-advanced/basic1/proto"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/metadata"
+	"google.golang.org/protobuf/types/known/emptypb"
 	"net"
 )
 
@@ -13,14 +15,22 @@ type User struct {
 
 var Token = "123456"
 
-func (u *User) GetUserInfo(ctx context.Context, req *proto.UserInfoRequest) (*proto.UserInfoResponse, error) {
-	if req.Token != Token {
+func (u *User) GetUserInfo(ctx context.Context, empty *emptypb.Empty) (*proto.UserInfoResponse, error) {
+	//if req.Token != Token {
+	//	return &proto.UserInfoResponse{
+	//		Code: 1,
+	//		Msg:  "Token is invalid",
+	//	}, nil
+	//}
+
+	md, _ := metadata.FromIncomingContext(ctx) // 获取metadata
+	clientToken := md.Get("token")[0]          // 获取token
+	if clientToken != Token {
 		return &proto.UserInfoResponse{
 			Code: 1,
 			Msg:  "Token is invalid",
 		}, nil
 	}
-
 	return &proto.UserInfoResponse{
 		Code: 0,
 		Msg:  "OK",

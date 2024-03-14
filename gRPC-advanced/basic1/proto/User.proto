@@ -1,11 +1,10 @@
 syntax = 'proto3';
 option go_package = "./;proto";
+import "google/protobuf/empty.proto";
 
-
-message UserInfoRequest {
-  string token = 1;
-
-}
+//message UserInfoRequest {
+//  string token = 1;
+//}
 
 enum Course{
   Go = 0;
@@ -27,5 +26,6 @@ message UserInfoResponse {
 }
 
 service User {
-  rpc GetUserInfo(UserInfoRequest) returns (UserInfoResponse);
+//  rpc GetUserInfo(UserInfoRequest) returns (UserInfoResponse);
+  rpc GetUserInfo(google.protobuf.Empty) returns (UserInfoResponse);
 }

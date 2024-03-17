@@ -1,0 +1,31 @@
+syntax = 'proto3';
+option go_package = "./;proto";
+import "google/protobuf/empty.proto";
+
+//message UserInfoRequest {
+//  string token = 1;
+//}
+
+enum Course{
+  Go = 0;
+  Java = 1;
+  Python = 2;
+  Cpp = 3;
+}
+
+message UserInfo{
+  int64 uid = 1;
+  string username = 2;
+  repeated Course courseList = 3;
+}
+
+message UserInfoResponse {
+  int32 code = 1;
+  string msg = 2;
+  UserInfo data = 3;
+}
+
+service User {
+//  rpc GetUserInfo(UserInfoRequest) returns (UserInfoResponse);
+  rpc GetUserInfo(google.protobuf.Empty) returns (UserInfoResponse);
+}

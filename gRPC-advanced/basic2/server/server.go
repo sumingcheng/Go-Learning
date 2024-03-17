@@ -34,13 +34,11 @@ func (u *User) GetUserInfo(ctx context.Context, empty *emptypb.Empty) (*proto.Us
 }
 
 func main() {
-	opt := []grpc.ServerOption{
-		grpc.UnaryInterceptor(grpc_middleware.ChainUnaryServer(
-			checkToken,
-			Test,
-		)),
-	}
-	gServer := grpc.NewServer(opt...)
+	opt := grpc.UnaryInterceptor(grpc_middleware.ChainUnaryServer(
+		checkToken,
+		Test,
+	))
+	gServer := grpc.NewServer(opt)
 	proto.RegisterUserServer(gServer, &User{})
 	listerner, _ := net.Listen("tcp", ":8080")
 	_ = gServer.Serve(listerner)

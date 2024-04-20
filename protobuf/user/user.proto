@@ -1,0 +1,41 @@
+syntax = "proto3";
+package proto;
+// protoc -I . --govalidators_out=. --go_out=plugins=grpc:. ./user.proto
+option go_package = "/;proto";
+
+import "validator.proto";
+
+message UserLoginRequest {
+  string username = 1 [
+    (validator.field) = { length_gt: 5, length_lt: 16 }
+  ];
+  string password = 2 [
+    (validator.field) = { length_gt: 7, length_lt: 21 }
+  ];
+  string token = 3 [
+    (validator.field) = { length_eq: 32 }
+  ];
+}
+
+message UserRegisterRequest {
+  string username = 1 [
+    (validator.field) = { length_gt: 5, length_lt: 16 }
+  ];
+  string password = 2 [
+    (validator.field) = { length_gt: 7, length_lt: 21 }
+  ];
+  string rePassword = 3 [
+    (validator.field) = { length_gt: 7, length_lt: 21 }
+  ];
+}
+
+message UserResponse {
+  int32 code = 1;
+  string msg = 2;
+  string username = 3;
+}
+
+service User {
+  rpc Login (UserLoginRequest) returns (UserResponse);
+  rpc Register (UserRegisterRequest) returns (UserResponse);
+}

@@ -4,7 +4,7 @@
 // 	protoc        v4.25.2
 // source: user.proto
 
-package proto
+package main
 
 import (
 	_ "github.com/envoyproxy/protoc-gen-validate/validate"

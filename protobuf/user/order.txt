@@ -1,1 +1,5 @@
- protoc -I . --go_out=. --go-grpc_out=. --validate_out="lang=go:." ./user.proto
+编译 user.pb.validate
+protoc --proto_path=. --go_out=paths=source_relative:. --validate_out=lang=go,paths=source_relative:. user.proto
+
+生成 三个文件
+protoc -I . --go_out=. --go-grpc_out=. --validate_out="lang=go:." ./user.proto

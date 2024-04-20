@@ -57,11 +57,39 @@ func (m *UserLoginRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for Username
+	if l := utf8.RuneCountInString(m.GetUsername()); l < 6 || l > 15 {
+		err := UserLoginRequestValidationError{
+			field:  "Username",
+			reason: "value length must be between 6 and 15 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
-	// no validation rules for Password
+	if l := utf8.RuneCountInString(m.GetPassword()); l < 8 || l > 20 {
+		err := UserLoginRequestValidationError{
+			field:  "Password",
+			reason: "value length must be between 8 and 20 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
-	// no validation rules for Token
+	if utf8.RuneCountInString(m.GetToken()) != 32 {
+		err := UserLoginRequestValidationError{
+			field:  "Token",
+			reason: "value length must be 32 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+
+	}
 
 	if len(errors) > 0 {
 		return UserLoginRequestMultiError(errors)
@@ -163,11 +191,38 @@ func (m *UserRegisterRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for Username
+	if l := utf8.RuneCountInString(m.GetUsername()); l < 6 || l > 15 {
+		err := UserRegisterRequestValidationError{
+			field:  "Username",
+			reason: "value length must be between 6 and 15 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
-	// no validation rules for Password
+	if l := utf8.RuneCountInString(m.GetPassword()); l < 8 || l > 20 {
+		err := UserRegisterRequestValidationError{
+			field:  "Password",
+			reason: "value length must be between 8 and 20 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
-	// no validation rules for RePassword
+	if l := utf8.RuneCountInString(m.GetRePassword()); l < 8 || l > 20 {
+		err := UserRegisterRequestValidationError{
+			field:  "RePassword",
+			reason: "value length must be between 8 and 20 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if len(errors) > 0 {
 		return UserRegisterRequestMultiError(errors)

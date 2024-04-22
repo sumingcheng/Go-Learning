@@ -20,7 +20,7 @@ func main() {
 	router.LoadHTMLGlob("./Gin/basic1/*")
 
 	router.GET("/", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "index.html", gin.H{
+		c.HTML(http.StatusOK, "user.html", gin.H{
 			"Title":   "主页",
 			"Header":  "欢迎来到我的网站",
 			"Content": "这是使用Gin进行服务端渲染的示例。",

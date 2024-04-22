@@ -10,17 +10,28 @@ import (
 
 func main() {
 	r := gin.Default()
-	r.LoadHTMLGlob("templates/*")
 
-	dir, _ := filepath.Abs(filepath.Dir(os.Args[0]))
-	fmt.Print(dir)
+	// 获取当前工作目录
+	cwd, err := os.Getwd()
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("当前工作目录:", cwd)
 
-	r.GET("/html", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "index.html", gin.H{})
+	// 根据当前工作目录构建模板路径
+	templatePath := filepath.Join(cwd, "./Gin/ssr/templates/**/*")
+	r.LoadHTMLGlob(templatePath)
+
+	r.GET("/home", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "home.html", gin.H{"title": "Main website"})
 	})
 
 	r.GET("/list", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "list.html", gin.H{})
+		c.HTML(http.StatusOK, "list.html", gin.H{"title": "Main website"})
+	})
+
+	r.GET("/user", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "user.html", gin.H{"title": "Main website"})
 	})
 
 	r.Run(":8888")

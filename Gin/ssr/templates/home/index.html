@@ -4,10 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    {{template "style.html" .}}
 </head>
 <body>
-<h1>服务端渲染</h1>
-<h1>{{.title}}</h1>
+<div>
+    <div>
+
+    </div>
+    <div id="app"></div>
+</div>
+{{template "script.html" .}}
+
 </body>
 </html>
 

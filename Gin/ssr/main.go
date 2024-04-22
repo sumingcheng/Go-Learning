@@ -22,6 +22,12 @@ func main() {
 	templatePath := filepath.Join(cwd, "./Gin/ssr/templates/**/*")
 	r.LoadHTMLGlob(templatePath)
 
+	r.GET("/", func(c *gin.Context) {
+		//c.Header("Cache-Control", "no-cache, no-store, must-revalidate")
+		c.Redirect(http.StatusFound, "/list")
+		c.HTML(http.StatusOK, "home.html", gin.H{"title": "Main website"})
+	})
+
 	r.GET("/home", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "home.html", gin.H{"title": "Main website"})
 	})
@@ -34,5 +40,5 @@ func main() {
 		c.HTML(http.StatusOK, "user.html", gin.H{"title": "Main website"})
 	})
 
-	r.Run(":8888")
+	r.Run(":9999")
 }

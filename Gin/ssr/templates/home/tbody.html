@@ -1,0 +1,22 @@
+<!--  渲染  -->
+{{range $index, $ele := .students}}
+<tr>
+    <td>{{$ele.Id}}</td>
+    <td>{{$ele.Name}}</td>
+    <td>{{$ele.Age}}</td>
+    <td>{{$ele.Score}}</td>
+    <td>
+        {{if and (ge $ele.Score 90) (le $ele.Score 100)}}
+        A
+        {{else if and (ge $ele.Score 80) (lt $ele.Score 90)}}
+        B
+        {{else if and (ge $ele.Score 70) (lt $ele.Score 80)}}
+        C
+        {{else if and (ge $ele.Score 60) (lt $ele.Score 70)}}
+        D
+        {{else}}
+        E
+        {{end}}
+    </td>
+</tr>
+{{end}}

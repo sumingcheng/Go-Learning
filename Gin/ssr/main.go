@@ -8,6 +8,20 @@ import (
 	"path/filepath"
 )
 
+type Student struct {
+	Id    int    `json:"id"`
+	Name  string `json:"name"`
+	Age   int    `json:"age"`
+	Score int    `json:"score"`
+}
+
+var students = []Student{
+	{1, "张三", 18, 90},
+	{2, "李四", 19, 80},
+	{3, "王五", 20, 70},
+	{4, "赵六", 21, 60},
+}
+
 func main() {
 	r := gin.Default()
 
@@ -25,6 +39,7 @@ func main() {
 	r.GET("/", func(c *gin.Context) {
 		//c.Header("Cache-Control", "no-cache, no-store, must-revalidate")
 		c.Redirect(http.StatusFound, "/list")
+		//c.Redirect(http.StatusMovedPermanently, "/list")
 		c.HTML(http.StatusOK, "home.html", gin.H{"title": "Main website"})
 	})
 
@@ -33,7 +48,10 @@ func main() {
 	})
 
 	r.GET("/list", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "list.html", gin.H{"title": "Main website"})
+		c.HTML(http.StatusOK, "list.html", gin.H{
+			"title":    "Main website",
+			"students": students,
+		})
 	})
 
 	r.GET("/user", func(c *gin.Context) {

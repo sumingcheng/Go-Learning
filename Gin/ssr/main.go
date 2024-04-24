@@ -34,7 +34,10 @@ func main() {
 
 	// 根据当前工作目录构建模板路径
 	templatePath := filepath.Join(cwd, "./Gin/ssr/templates/**/*")
+	staticPath := filepath.Join(cwd, "./Gin/ssr/client")
 	r.LoadHTMLGlob(templatePath)
+	fmt.Println("模板路径:", staticPath)
+	r.Static("/client", staticPath)
 
 	r.GET("/", func(c *gin.Context) {
 		//c.Header("Cache-Control", "no-cache, no-store, must-revalidate")
@@ -45,6 +48,10 @@ func main() {
 
 	r.GET("/home", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "home.html", gin.H{"title": "Main website"})
+	})
+
+	r.GET("/react", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "react.html", gin.H{"title": "Main website"})
 	})
 
 	r.GET("/list", func(c *gin.Context) {

@@ -5,7 +5,9 @@ import (
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"os"
+	"os/signal"
 	"path/filepath"
+	"syscall"
 )
 
 type Student struct {
@@ -86,5 +88,13 @@ func main() {
 		})
 	})
 
-	r.Run(":9999")
+	go func() {
+		r.Run(":9999")
+	}()
+
+	quitChan := make(chan os.Signal)
+
+	signal.Notify(quitChan, syscall.SIGINT, syscall.SIGTERM)
+	<-quitChan
+	fmt.Println("Shutdown Server ...")
 }

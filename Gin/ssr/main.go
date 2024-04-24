@@ -25,6 +25,19 @@ var students = []Student{
 func main() {
 	r := gin.Default()
 
+	// 处理跨域
+	r.Use(func(c *gin.Context) {
+		c.Header("Access-Control-Allow-Origin", "*")
+		c.Header("Access-Control-Allow-Headers", "Content-Type,AccessToken,X-CSRF-Token, Authorization, Token")
+		c.Header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
+		c.Header("Access-Control-Expose-Headers", "Content-Length, Access-Control-Allow-Origin, Access-Control-Allow-Headers, Content-Type")
+		c.Header("Access-Control-Allow-Credentials", "true")
+		if c.Request.Method == "OPTIONS" {
+			c.AbortWithStatus(http.StatusNoContent)
+		}
+		c.Next()
+	})
+
 	// 获取当前工作目录
 	cwd, err := os.Getwd()
 	if err != nil {
@@ -63,6 +76,14 @@ func main() {
 
 	r.GET("/user", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "user.html", gin.H{"title": "Main website"})
+	})
+
+	r.GET("/student", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{
+			"code": 0,
+			"msg":  "success",
+			"data": students,
+		})
 	})
 
 	r.Run(":9999")

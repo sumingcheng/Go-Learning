@@ -5,7 +5,9 @@ import (
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"os"
+	"os/signal"
 	"path/filepath"
+	"syscall"
 )
 
 type Student struct {
@@ -25,6 +27,19 @@ var students = []Student{
 func main() {
 	r := gin.Default()
 
+	// 处理跨域
+	r.Use(func(c *gin.Context) {
+		c.Header("Access-Control-Allow-Origin", "*")
+		c.Header("Access-Control-Allow-Headers", "Content-Type,AccessToken,X-CSRF-Token, Authorization, Token")
+		c.Header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
+		c.Header("Access-Control-Expose-Headers", "Content-Length, Access-Control-Allow-Origin, Access-Control-Allow-Headers, Content-Type")
+		c.Header("Access-Control-Allow-Credentials", "true")
+		if c.Request.Method == "OPTIONS" {
+			c.AbortWithStatus(http.StatusNoContent)
+		}
+		c.Next()
+	})
+
 	// 获取当前工作目录
 	cwd, err := os.Getwd()
 	if err != nil {
@@ -34,7 +49,10 @@ func main() {
 
 	// 根据当前工作目录构建模板路径
 	templatePath := filepath.Join(cwd, "./Gin/ssr/templates/**/*")
+	staticPath := filepath.Join(cwd, "./Gin/ssr/client")
 	r.LoadHTMLGlob(templatePath)
+	fmt.Println("模板路径:", staticPath)
+	r.Static("/client", staticPath)
 
 	r.GET("/", func(c *gin.Context) {
 		//c.Header("Cache-Control", "no-cache, no-store, must-revalidate")
@@ -45,6 +63,10 @@ func main() {
 
 	r.GET("/home", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "home.html", gin.H{"title": "Main website"})
+	})
+
+	r.GET("/react", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "react.html", gin.H{"title": "Main website"})
 	})
 
 	r.GET("/list", func(c *gin.Context) {
@@ -58,5 +80,21 @@ func main() {
 		c.HTML(http.StatusOK, "user.html", gin.H{"title": "Main website"})
 	})
 
-	r.Run(":9999")
+	r.GET("/student", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{
+			"code": 0,
+			"msg":  "success",
+			"data": students,
+		})
+	})
+
+	go func() {
+		r.Run(":9999")
+	}()
+
+	quitChan := make(chan os.Signal)
+
+	signal.Notify(quitChan, syscall.SIGINT, syscall.SIGTERM)
+	<-quitChan
+	fmt.Println("Shutdown Server ...")
 }

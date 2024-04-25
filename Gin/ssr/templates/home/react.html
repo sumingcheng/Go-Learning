@@ -1,0 +1,21 @@
+{{define "react.html"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {{template "style.html" .}}
+</head>
+<body>
+<div>
+    <div>
+        React HTML
+    </div>
+    <div id="app"></div>
+</div>
+{{template "script.html" .}}
+
+</body>
+</html>
+
+{{end}}

@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-var a bool = true
+var a1 bool = true
 
 func main() {
 	// defer 写在前面会先注册，但是不会立即执行
@@ -10,7 +10,7 @@ func main() {
 		fmt.Println("1")
 	}()
 
-	if a == true {
+	if a1 == true {
 		fmt.Println("2")
 		return
 	}

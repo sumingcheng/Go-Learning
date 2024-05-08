@@ -10,7 +10,7 @@ type People2 struct {
 }
 
 func main() {
-	js := `{"name": "seekload"}` // 正确定义 JSON 字符串
+	js := `{"name": "seek load"}` // 正确定义 JSON 字符串
 	var p People2
 	err := json.Unmarshal([]byte(js), &p)
 	if err != nil {

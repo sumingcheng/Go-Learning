@@ -19,6 +19,7 @@ func DeferTest1(i int) (r int) {
 }
 
 // DeferTest2 函数接受一个整型参数 i 并返回一个整型
+// 命名返回值就是返回值不只有类型还有准确的变量名
 func DeferTest2(i int) (r int) {
 	// defer 语句，将延迟执行到函数返回前
 	defer func() {

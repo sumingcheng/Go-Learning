@@ -12,7 +12,7 @@ func hello1(num ...int) {
 
 func Test13(t *testing.T) {
 	i := []int{5, 6, 7} // 定义一个整数切片
-	hello1(i...)        // 将切片展开传递给 hello1 函数
+	hello1(i...)        // 将切片展开传递给 hello1 函数，注意可变函数是指针传递
 	fmt.Println(i[0])   // 打印切片的第一个元素
 }
 

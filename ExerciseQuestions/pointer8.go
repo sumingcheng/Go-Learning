@@ -2,10 +2,10 @@ package main
 
 import "fmt"
 
-// 定义P为*int的别名
+// P 定义P为*int的别名
 type P *int
 
-// 定义Q为*int的别名
+// Q 定义Q为*int的别名
 type Q *int
 
 func main() {

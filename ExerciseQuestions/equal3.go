@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-type Person struct {
+type Person2 struct {
 	Name string
 	Age  int
 }
@@ -16,8 +16,8 @@ func main() {
 	fmt.Println(a == b) // 输出: true
 
 	// 结构体比较
-	p1 := Person{Name: "John", Age: 30}
-	p2 := Person{Name: "John", Age: 30}
+	p1 := Person2{Name: "John", Age: 30}
+	p2 := Person2{Name: "John", Age: 30}
 	fmt.Println(p1 == p2) // 输出: true
 
 	// 接口比较

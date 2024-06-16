@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	logger := util.NewLogger(util.LoggerConfig{
+	prodLogger := util.NewLogger(util.LoggerConfig{
 		Mode:       "prod",
 		FilePath:   "./zap3/logs/log.log",
 		MaxSize:    1,
@@ -16,8 +16,8 @@ func main() {
 		Level:      zap.InfoLevel,
 	})
 
-	logger.Info("这是一个普通日志", zap.String("module", "main"))
-	logger.Warn("这是一个错误日志", zap.String("module", "main"))
+	prodLogger.Info("这是一个普通日志", zap.String("module", "main"))
+	prodLogger.Warn("这是一个错误日志", zap.String("module", "main"))
 
 	// zap.L() 和 zap.S() 是 zap 日志库提供的两个全局函数
 	// 用于获取全局的 zap.Logger 和 zap.SugaredLogger 实例。
@@ -27,8 +27,8 @@ func main() {
 	test.Test()
 
 	for i := 0; i < 10000; i++ {
-		logger.Info("这是一个普通日志", zap.String("module", "main"))
-		logger.Warn("这是一个错误日志", zap.String("module", "main"))
+		prodLogger.Info("这是一个普通日志", zap.String("module", "main"))
+		prodLogger.Warn("这是一个错误日志", zap.String("module", "main"))
 		zap.L().Info("这是一个【全局】普通日志")
 		zap.S().Info("这是一个【全局】普通日志")
 	}

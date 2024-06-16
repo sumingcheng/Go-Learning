@@ -1,0 +1,4 @@
+[INFO] 2024/06/16 12:35:10 log.go:50: This is an info message: [info]
+[WARN] 2024/06/16 12:35:10 log.go:57: This is a warning message: [warn]
+[ERROR] 2024/06/16 12:35:10 log.go:64: This is an error message: [error]
+[DEBUG] 2024/06/16 12:35:10 log.go:71: This is a debug message: [debug]

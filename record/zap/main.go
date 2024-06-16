@@ -39,15 +39,15 @@ func main() {
 
 	// 自定义 Logger 的配置
 	config := zap.Config{
-		Level:             zap.NewAtomicLevelAt(zap.InfoLevel),        // 日志级别设置为信息级别
-		Development:       false,                                      // 是否开启开发模式，开发模式下，日志将包括调用栈信息
-		Encoding:          "json",                                     // 设置日志格式为json
-		EncoderConfig:     zap.NewProductionEncoderConfig(),           // 生产环境下的日志编码配置
-		OutputPaths:       []string{"stdout", "./logs/global.log"},    // 日志输出路径，可以是标准输出或文件
-		ErrorOutputPaths:  []string{"stderr"},                         // 错误输出路径，错误日志将写入标准错误
-		InitialFields:     map[string]interface{}{"appName": "myApp"}, // 初始字段会添加到所有日志条目
-		DisableCaller:     false,                                      // 是否禁止记录日志调用者信息
-		DisableStacktrace: false,                                      // 是否禁止自动堆栈跟踪记录
+		Level:             zap.NewAtomicLevelAt(zap.InfoLevel),         // 日志级别设置为信息级别
+		Development:       false,                                       // 是否开启开发模式，开发模式下，日志将包括调用栈信息
+		Encoding:          "json",                                      // 设置日志格式为json
+		EncoderConfig:     zap.NewProductionEncoderConfig(),            // 生产环境下的日志编码配置
+		OutputPaths:       []string{"stdout", "./zap/logs/global.log"}, // 日志输出路径，可以是标准输出或文件
+		ErrorOutputPaths:  []string{"stderr"},                          // 错误输出路径，错误日志将写入标准错误
+		InitialFields:     map[string]interface{}{"appName": "myApp"},  // 初始字段会添加到所有日志条目
+		DisableCaller:     false,                                       // 是否禁止记录日志调用者信息
+		DisableStacktrace: false,                                       // 是否禁止自动堆栈跟踪记录
 	}
 
 	logger, err := config.Build()

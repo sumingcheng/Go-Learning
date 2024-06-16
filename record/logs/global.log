@@ -1,0 +1,14 @@
+{"level":"info","ts":1718534065.1942167,"caller":"zap/main.go:54","msg":"这是一个信息日志"}
+{"level":"info","ts":1718534089.3611412,"caller":"zap/main.go:54","msg":"这是一个信息日志"}
+{"level":"error","ts":1718534089.3611522,"caller":"zap/main.go:56","msg":"这是一个错误日志","stacktrace":"main.main\n\tD:/Desktop/GitHub/go-Learning/record/zap/main.go:56\nruntime.main\n\tC:/Users/SMC/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.22.2.windows-amd64/src/runtime/proc.go:271"}
+{"level":"info","ts":1718534110.0190506,"caller":"zap/main.go:54","msg":"这是一个信息日志"}
+{"level":"error","ts":1718534110.0190506,"caller":"zap/main.go:56","msg":"这是一个错误日志","stacktrace":"main.main\n\tD:/Desktop/GitHub/go-Learning/record/zap/main.go:56\nruntime.main\n\tC:/Users/SMC/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.22.2.windows-amd64/src/runtime/proc.go:271"}
+{"level":"info","ts":1718534118.4355576,"caller":"zap/main.go:54","msg":"这是一个信息日志"}
+{"level":"error","ts":1718534118.4355576,"caller":"zap/main.go:56","msg":"这是一个错误日志","stacktrace":"main.main\n\tD:/Desktop/GitHub/go-Learning/record/zap/main.go:56\nruntime.main\n\tC:/Users/SMC/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.22.2.windows-amd64/src/runtime/proc.go:271"}
+{"level":"info","ts":1718534151.13997,"caller":"zap/main.go:54","msg":"这是一个信息日志"}
+{"level":"error","ts":1718534151.140489,"caller":"zap/main.go:56","msg":"这是一个错误日志","stacktrace":"main.main\n\tD:/Desktop/GitHub/go-Learning/record/zap/main.go:56\nruntime.main\n\tC:/Users/SMC/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.22.2.windows-amd64/src/runtime/proc.go:271"}
+{"level":"info","ts":1718534252.6825228,"caller":"zap/main.go:54","msg":"这是一个信息日志"}
+{"level":"error","ts":1718534252.6825228,"caller":"zap/main.go:56","msg":"这是一个错误日志","stacktrace":"main.main\n\tD:/Desktop/GitHub/go-Learning/record/zap/main.go:56\nruntime.main\n\tC:/Users/SMC/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.22.2.windows-amd64/src/runtime/proc.go:271"}
+{"level":"warn","ts":1718534252.6825228,"caller":"zap/main.go:59","msg":"这是一个警告日志 @ warn"}
+{"level":"warn","ts":1718534259.33156,"caller":"zap/main.go:59","msg":"这是一个警告日志 @ warn"}
+{"level":"warn","ts":1718534888.33478,"caller":"zap/main.go:64","msg":"这是一个警告日志 @ warn","appName":"myApp"}

@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package idl;
+
+option go_package = "/my_proto;student_service";
+
+import "google/protobuf/timestamp.proto";
+
+message Student {
+  string Name = 1;
+  int32 Age = 5;
+  bool Gender = 4;
+  float Height = 7;
+  repeated string Locations = 8;
+  map<string, float> scores = 6;
+  google.protobuf.Timestamp Birthday = 10;
+}
+
+message Request{
+  string StudentId = 1;
+}
+
+service StudentService{
+  rpc GetStudentInfo(Request) returns (Student);
+}

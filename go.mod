@@ -13,6 +13,8 @@ require (
 	github.com/grpc-ecosystem/go-grpc-middleware v1.4.0
 	google.golang.org/grpc v1.60.1
 	google.golang.org/protobuf v1.33.0
+	gorm.io/driver/mysql v1.5.7
+	gorm.io/gorm v1.25.10
 )
 
 require (
@@ -21,8 +23,11 @@ require (
 	github.com/cloudwego/iasm v0.2.0 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.3 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
+	github.com/go-sql-driver/mysql v1.7.0 // indirect
 	github.com/goccy/go-json v0.10.2 // indirect
 	github.com/golang/protobuf v1.5.3 // indirect
+	github.com/jinzhu/inflection v1.0.0 // indirect
+	github.com/jinzhu/now v1.1.5 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.7 // indirect
 	github.com/leodido/go-urn v1.4.0 // indirect

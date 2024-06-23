@@ -19,7 +19,7 @@ message Student {
 message Request{
   string StudentId = 1;
 }
-
+// protoc -I . student_service.proto --go_out=. --go-grpc_out=.
 service StudentService{
   rpc GetStudentInfo(Request) returns (Student);
 }

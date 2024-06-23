@@ -16,7 +16,7 @@ func setValue(
 	value string,
 ) {
 	err := client.Set(ctx, key, value, 30*time.Second).Err()
-	checkError(err)
+	CheckError(err)
 }
 
 func getValue(
@@ -25,7 +25,7 @@ func getValue(
 	key string,
 ) string {
 	value, err := client.Get(ctx, key).Result()
-	checkError(err)
+	CheckError(err)
 	return value
 }
 
@@ -35,7 +35,7 @@ func deleteValue(
 	key string,
 ) {
 	err := client.Del(ctx, key).Err()
-	checkError(err)
+	CheckError(err)
 }
 
 func setExpiration(
@@ -45,7 +45,7 @@ func setExpiration(
 	duration time.Duration,
 ) {
 	err := client.Expire(ctx, key, duration).Err()
-	checkError(err)
+	CheckError(err)
 }
 
 func main() {
@@ -66,7 +66,7 @@ func main() {
 	deleteValue(ctx, client, key)
 }
 
-func checkError(err error) {
+func CheckError(err error) {
 	if err != nil {
 		if errors.Is(err, redis.Nil) {
 			fmt.Println("Key does not exist")

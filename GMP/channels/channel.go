@@ -25,8 +25,10 @@ func main() {
 	}()
 
 	// 1个消费者
-	mc := make(chan struct{})
+	wg2 := sync.WaitGroup{}
+	wg2.Add(1)
 	go func() {
+		defer wg2.Done()
 		sum := 0
 		for {
 			a, ok := <-ch
@@ -37,11 +39,10 @@ func main() {
 			}
 		}
 		fmt.Printf("sum=%d\n", sum)
-		mc <- struct{}{}
 	}()
 
-	wg.Wait() // 当生产者结束
+	wg.Wait()
 	close(ch)
 
-	<-mc
+	wg2.Wait()
 }

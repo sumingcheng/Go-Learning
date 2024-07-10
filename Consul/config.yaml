@@ -1,0 +1,3 @@
+consul:
+  address: "http://172.22.220.64"
+  port: "8500"

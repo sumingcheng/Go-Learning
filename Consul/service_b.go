@@ -1,4 +1,4 @@
-package main
+package Consul
 
 import (
 	"github.com/gin-gonic/gin"
@@ -31,7 +31,7 @@ func main() {
 	registration := &api.AgentServiceRegistration{
 		ID:      "serviceB",
 		Name:    "service-b",
-		Address: "localhost",
+		Address: "172.16.50.251",
 		Port:    8081,
 		Check: &api.AgentServiceCheck{
 			HTTP:                           "http://172.16.50.251:8081/health",

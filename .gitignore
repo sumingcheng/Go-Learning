@@ -27,3 +27,4 @@ dist/**/*
 
 *.pb.go
 *.pb.gw.go
+.idea/

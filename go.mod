@@ -4,6 +4,7 @@ go 1.21.3
 
 require (
 	github.com/bytedance/sonic v1.11.9
+	github.com/envoyproxy/protoc-gen-validate v1.0.4
 	github.com/fsnotify/fsnotify v1.7.0
 	github.com/gin-gonic/gin v1.9.1
 	github.com/go-playground/locales v0.14.1

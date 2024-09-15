@@ -13,7 +13,7 @@ func main() {
 	// 连接到服务端，地址是本地的 50051 端口
 	conn, err := grpc.Dial("localhost:50051", grpc.WithInsecure(), grpc.WithBlock())
 	if err != nil {
-		log.Fatalf("did not connect: %v", err) // 连接失败则打印错误并退出
+		log.Fatalf("did not connect.go: %v", err) // 连接失败则打印错误并退出
 	}
 
 	defer func(conn *grpc.ClientConn) {

@@ -48,8 +48,8 @@ func main() {
 	fmt.Println("当前工作目录:", cwd)
 
 	// 根据当前工作目录构建模板路径
-	templatePath := filepath.Join(cwd, "./Gin/ssr/templates/**/*")
-	staticPath := filepath.Join(cwd, "./Gin/ssr/client")
+	templatePath := filepath.Join(cwd, "./gin/ssr/templates/**/*")
+	staticPath := filepath.Join(cwd, "./gin/ssr/client")
 	r.LoadHTMLGlob(templatePath)
 	fmt.Println("模板路径:", staticPath)
 	r.Static("/client", staticPath)

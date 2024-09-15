@@ -1,4 +1,4 @@
-package Consul
+package consul
 
 import (
 	"github.com/gin-gonic/gin"
@@ -9,7 +9,7 @@ import (
 )
 
 func init() {
-	viper.SetConfigFile("./Consul/config.yaml")
+	viper.SetConfigFile("./consul/config.yaml")
 	err := viper.ReadInConfig() // 查找并读取配置文件
 	if err != nil {             // 处理读取配置文件的错误
 		log.Fatalf("致命错误: 配置文件读取失败: %s \n", err)
@@ -18,12 +18,12 @@ func init() {
 
 func main() {
 
-	// 创建 Consul 客户端
+	// 创建 consul 客户端
 	consulConfig := api.DefaultConfig()
 	consulConfig.Address = viper.GetString("consul.address") + ":" + viper.GetString("consul.port")
 	consulClient, err := api.NewClient(consulConfig)
 	if err != nil {
-		log.Fatalf("创建 Consul 客户端时发生错误: %s", err)
+		log.Fatalf("创建 consul 客户端时发生错误: %s", err)
 	}
 
 	// 注册服务
@@ -40,10 +40,10 @@ func main() {
 	}
 	err = consulClient.Agent().ServiceRegister(registration)
 	if err != nil {
-		log.Fatalf("向 Consul 注册服务 A 时发生错误: %s", err)
+		log.Fatalf("向 consul 注册服务 A 时发生错误: %s", err)
 	}
 
-	// 设置 Gin 路由
+	// 设置 gin 路由
 	r := gin.Default()
 	r.GET("/health", func(c *gin.Context) {
 		c.Status(http.StatusOK)

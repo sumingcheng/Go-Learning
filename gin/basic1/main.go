@@ -17,7 +17,7 @@ func main() {
 
 	router := gin.Default()
 
-	router.LoadHTMLGlob("./Gin/basic1/*")
+	router.LoadHTMLGlob("./gin/basic1/*")
 
 	router.GET("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "user.html", gin.H{

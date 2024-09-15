@@ -19,7 +19,7 @@ func main() {
 
 	// 创建 5 个 worker goroutines
 	for i := 0; i < 5; i++ {
-		go worker(i, ch) // 每个 goroutine 代表 GMP 模型中的一个 G
+		go worker(i, ch) // 每个 goroutine 代表 gmp 模型中的一个 G
 	}
 
 	// 发送数据到 channel

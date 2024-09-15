@@ -39,6 +39,6 @@ func main() {
 		c.JSON(http.StatusOK, gin.H{"message": "注册成功"})
 	})
 
-	// 运行 Gin 服务器
+	// 运行 gin 服务器
 	r.Run(":8888")
 }

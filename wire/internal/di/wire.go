@@ -6,10 +6,10 @@ package di
 import (
 	"github.com/google/wire"
 
-	"wire/internal/application/service"
-	"wire/internal/infrastructure/db"
-	infraRepo "wire/internal/infrastructure/repository"
-	"wire/internal/interfaces/handler"
+	"wire-demo/internal/application/service"
+	"wire-demo/internal/infrastructure/db"
+	infraRepo "wire-demo/internal/infrastructure/repository"
+	"wire-demo/internal/interfaces/handler"
 )
 
 func InitializeOrderHandler(dsn string) (*handler.OrderHandler, error) {

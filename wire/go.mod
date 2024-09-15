@@ -1,4 +1,4 @@
-module wire
+module wire-demo
 
 go 1.22.2
 

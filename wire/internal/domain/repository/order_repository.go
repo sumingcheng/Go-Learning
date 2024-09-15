@@ -1,6 +1,6 @@
 package repository
 
-import "wire/internal/domain/model"
+import "wire-demo/internal/domain/model"
 
 type OrderRepository interface {
 	Save(order *model.Order) error

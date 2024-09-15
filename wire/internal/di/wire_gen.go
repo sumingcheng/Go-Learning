@@ -7,10 +7,10 @@
 package di
 
 import (
-	"wire/internal/application/service"
-	"wire/internal/infrastructure/db"
-	"wire/internal/infrastructure/repository"
-	"wire/internal/interfaces/handler"
+	"wire-demo/internal/application/service"
+	"wire-demo/internal/infrastructure/db"
+	"wire-demo/internal/infrastructure/repository"
+	"wire-demo/internal/interfaces/handler"
 )
 
 // Injectors from wire.go:

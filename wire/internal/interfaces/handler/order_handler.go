@@ -3,8 +3,8 @@ package handler
 import (
 	"fmt"
 
-	"wire/internal/application/service"
-	"wire/internal/domain/model"
+	"wire-demo/internal/application/service"
+	"wire-demo/internal/domain/model"
 )
 
 type OrderHandler struct {

@@ -3,8 +3,8 @@ package repository
 import (
 	"database/sql"
 
-	"wire/internal/domain/model"
-	"wire/internal/domain/repository"
+	"wire-demo/internal/domain/model"
+	"wire-demo/internal/domain/repository"
 )
 
 type OrderRepositoryImpl struct {

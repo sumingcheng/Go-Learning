@@ -1,12 +1,16 @@
 package service
 
-// User 定义用户结构体
-type User struct {
-	ID   string
-	Name string
-}
+import (
+	"errors"
+	"test/ginTest/models"
+)
 
-// UserService 描述与用户相关的服务接口
-type UserService interface {
-	GetUser(id string) (*User, error)
+type UserServiceImpl struct{}
+
+func (s *UserServiceImpl) GetUser(id string) (*models.User, error) {
+	// 示例：返回一个假用户
+	if id == "1" {
+		return &models.User{ID: "1", Name: "Alice"}, nil
+	}
+	return nil, errors.New("user not found")
 }

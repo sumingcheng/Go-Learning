@@ -10,10 +10,9 @@
 package mocks
 
 import (
-	reflect "reflect"
-	service "test/ginTest/service"
-
 	gomock "go.uber.org/mock/gomock"
+	reflect "reflect"
+	service "test/ginTest/models"
 )
 
 // MockUserService is a mock of UserService interface.
